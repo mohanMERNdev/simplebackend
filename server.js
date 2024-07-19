@@ -8,7 +8,7 @@ app.use(express.json());
 
 // CORS Middleware
 app.use(cors({
-    origin: 'https://simplefrontend-three.vercel.app' // Ensure this matches exactly
+    origin: 'https://simplefrontend-3ecgo2l0p-mohanmerndevs-projects.vercel.app/' // Ensure this matches exactly
 }));
 
 // Simple in-memory data store
