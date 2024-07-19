@@ -1,25 +1,22 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Middleware to parse JSON
-app.use(express.json());
+// Use the cors middleware
+app.use(cors());
 
-// Simple in-memory data store
-let items = [];
+// OR if you want to allow requests from a specific origin
+app.use(cors({
+    origin: 'https://simplefrontend-three.vercel.app'
+}));
 
-// API endpoint to get all items
+// Your existing code to set up routes and start the server
 app.get('/api/items', (req, res) => {
-  res.json(items);
+    res.json({ message: 'This is your data' });
 });
 
-// API endpoint to add a new item
-app.post('/api/items', (req, res) => {
-  const newItem = req.body;
-  items.push(newItem);
-  res.status(201).json(newItem);
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
